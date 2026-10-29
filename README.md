@@ -1,3 +1,5 @@
+![Universal Reverse Engineering Skill](assets/ure-header.jpg)
+
 # Universal Reverse Engineering Skill
 
 [![validate](https://github.com/emiluzelac/universal-reverse-engineering/actions/workflows/validate.yml/badge.svg)](https://github.com/emiluzelac/universal-reverse-engineering/actions/workflows/validate.yml)
