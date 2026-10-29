@@ -1,5 +1,7 @@
 # Universal Reverse Engineering Skill
 
+[![validate](https://github.com/emiluzelac/universal-reverse-engineering/actions/workflows/validate.yml/badge.svg)](https://github.com/emiluzelac/universal-reverse-engineering/actions/workflows/validate.yml)
+
 An [Agent Skill](https://agentskills.io/specification) that teaches an AI coding agent to work out **how things work**: a program, a file format, a protocol, a gadget, a product, a process. It is evidence-first. The agent observes, builds a model, tests it, and explains, and it keeps *observed*, *inferred*, *verified* and *unknown* apart the whole way.
 
 It is one folder, `reverse-engineering/`, in the open Agent Skills format, so the same copy works in Claude Code, Qwen Code, Codex and any other host that reads that format. It also degrades gracefully: pasted into a plain chat window with no tools, it still runs the method without inventing tool calls.
