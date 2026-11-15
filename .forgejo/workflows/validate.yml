@@ -1,0 +1,32 @@
+name: validate
+
+# Runs in a disposable VM on the estate's CI host. Since 2026-11-15 the
+# canonical repository is on our own (private) Forgejo, which mirrors every push
+# to github.com/emiluzelac/universal-reverse-engineering, the public face. The
+# Python image has no Node for actions/checkout, so the job checks out with git
+# and its own token.
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  smoke:
+    runs-on: [self-hosted, linux, x64, iam-ci-isolated]
+    timeout-minutes: 15
+    container: python:3.12-bookworm@sha256:4209fae09a3e20afd863e528bfddc235da5fd5977983e1996cd54cc9a72e6267
+    steps:
+      - name: Check out
+        env:
+          CHECKOUT_TOKEN: ${{ github.token }}
+          SERVER: ${{ github.server_url }}
+          REPOSITORY: ${{ github.repository }}
+          COMMIT: ${{ github.sha }}
+        run: |
+          git config --global --add safe.directory "$PWD"
+          git init -q .
+          git -c "http.extraHeader=Authorization: token $CHECKOUT_TOKEN" \
+            fetch -q --depth 1 "$SERVER/$REPOSITORY.git" "$COMMIT"
+          git checkout -q --detach FETCH_HEAD
+      - run: pip install skills-ref
+      - run: tests/smoke.sh reverse-engineering

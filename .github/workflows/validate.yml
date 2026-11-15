@@ -1,6 +1,9 @@
 name: validate
+# Pull requests opened on GitHub only. Since 2026-11-15 the canonical repository
+# and its checks are on our own (private) Forgejo (.forgejo/workflows/validate.yml),
+# which mirrors every push here; this keeps the check for an outside
+# contributor's pull request, on GitHub-hosted runners.
 on:
-  push:
   pull_request:
 jobs:
   smoke:
