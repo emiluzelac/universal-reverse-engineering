@@ -55,6 +55,15 @@ Issues and pull requests are welcome. A few things keep the skill universal:
 - If you change `SKILL.md`, run `tests/bare_chat_sample.py` against a small local model before and after, 30 runs each, and say what you measured in the pull request. Wording that reads naturally to a large model can make a small one invent tool calls.
 - Bump `metadata.version` and add a line to the Versions list in `reverse-engineering/README.md`.
 
-## Credits and licence
+## Where this lives
 
-Written by Emil Uzelac. The first draft was made with ChatGPT; the audit, host-neutral packaging, test runs and later versions were done with Claude Code. Released under the [MIT licence](LICENSE).
+This repository is developed in a private Forgejo and mirrored here: every commit
+and tag on GitHub arrives from there. Issues and pull requests are welcome on
+GitHub; an accepted change is applied on Forgejo and comes back through the mirror,
+so nothing is merged here directly.
+
+CI (the smoke test) runs from `.forgejo/workflows/`; `.github/workflows/` keeps the same check for pull requests opened on GitHub. Nothing is published on a push; the skill is copied in from its private source (`ops/publish.sh` there).
+
+## Credits and license
+
+Written by Emil Uzelac. The first draft was made with ChatGPT; the audit, host-neutral packaging, test runs and later versions were done with Claude Code. Released under the [MIT license](LICENSE).
